@@ -15,7 +15,7 @@ const openai = new OpenAIApi(configuration);
 //app.use(cors())
 
 let corsOptions = {
-  origin: [ 'http://localhost:4200', 'http://localhost:3000','http://192.168.10.47:5555','http://localhost:5555' ]
+  origin: [ 'http://localhost:4200', 'http://localhost:3000','http://192.168.10.47:5555','http://localhost:5555','https://open-ai-frontend-tau.vercel.app' ]
 };
 
 app.use(express.json())
