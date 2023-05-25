@@ -30,8 +30,6 @@ app.post('/api/chat',cors(corsOptions), async (req, res) => {
         messages: [{ role: "user", content: message },{ role: "assistant", content: '' }]
       });
       //console.log(completion.data);
-      res.setHeader('Content-Type', 'text/html');
-      res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
       res.status(200).json({state:'success',message:completion.data.choices})
   } catch (error) {
     //console.error(error)
@@ -42,6 +40,3 @@ app.post('/api/chat',cors(corsOptions), async (req, res) => {
 app.listen(3000, () => {
   console.log('Express server listening on port 3000')
 })
-
-
-module.exports = app;
