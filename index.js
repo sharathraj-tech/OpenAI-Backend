@@ -8,7 +8,7 @@ var app = express()
 //app.use(bodyParser())
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "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"//process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
