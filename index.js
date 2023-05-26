@@ -8,7 +8,7 @@ var app = express()
 //app.use(bodyParser())
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "sk-YuzOmprocess.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
