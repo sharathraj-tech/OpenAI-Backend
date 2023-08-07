@@ -17,7 +17,7 @@ app.use(cors({
   origin: 'https://open-ai-frontend-tau.vercel.app'
 }));
 
-app.post('/api/chat', async (req, res) => {
+app.get('/api/chat', async (req, res) => {
   const message = req.query.message;
 
   try {
