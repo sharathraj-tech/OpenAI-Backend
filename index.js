@@ -18,9 +18,16 @@ let corsOptions = {
   origin: [ 'http://localhost:4200', 'http://localhost:3000','http://192.168.10.47:5555','http://localhost:5555','https://open-ai-frontend-tau.vercel.app' ]
 };
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://open-ai-frontend-tau.vercel.app');
+  // If you want to allow any domain, use the wildcard '*':
+  // res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.use(express.json())
 
-app.post('/api/chat',cors(corsOptions), async (req, res) => {
+app.post('/api/chat', async (req, res) => {
   var message = req.query.message
 
   //console.log(message)
