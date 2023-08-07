@@ -18,14 +18,19 @@ let corsOptions = {
   origin: [ 'http://localhost:4200', 'http://localhost:3000','http://192.168.10.47:5555','http://localhost:5555','https://open-ai-frontend-tau.vercel.app' ]
 };
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://open-ai-frontend-tau.vercel.app');
+//app.use((req, res, next) => {
+  //res.setHeader('Access-Control-Allow-Origin', 'https://open-ai-frontend-tau.vercel.app');
   // If you want to allow any domain, use the wildcard '*':
   // res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
+ // next();
+//});
 
 app.use(express.json())
+
+
+app.use(cors({
+  origin:'https://open-ai-frontend-tau.vercel.app'
+}));
 
 app.post('/api/chat', async (req, res) => {
   var message = req.query.message
@@ -37,15 +42,15 @@ app.post('/api/chat', async (req, res) => {
         messages: [{ role: "user", content: message },{ role: "assistant", content: '' }]
       });
       //console.log(completion.data);
-      res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', '*')
+     // res.setHeader('Access-Control-Allow-Credentials', true)
+ // res.setHeader('Access-Control-Allow-Origin', '*')
   // another common pattern
   // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
+ // res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  //res.setHeader(
+   // 'Access-Control-Allow-Headers',
+   // 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  //)
       res.status(200).json({state:'success',message:completion.data.choices})
   } catch (error) {
     //console.error(error)
